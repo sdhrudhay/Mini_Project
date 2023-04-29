@@ -9,18 +9,27 @@ const createProject = async (req, res) => {
     .json({ message: "project created successfully", project });
 };
 
-const retrieveAllProjects = async (req , res) =>{
+const retrieveAllProjects = async (req, res) => {
   console.log("entered get all projects controller");
   const projects = await Project.find();
   res.status(StatusCodes.OK).json(projects);
-}
-
-const withdraw = async (req, res) => {
-  
 };
+
+const changeProjectStatus = async (req, res) => {
+  console.log("entered change project controller");
+  await Project.findByIdAndUpdate(req.params.id, {
+    status: "closed",
+  });
+  res
+    .status(StatusCodes.OK)
+    .json({ "message ": "project status updated successfully" });
+};
+
+
 
 module.exports = {
   createProject,
-  withdraw,
   retrieveAllProjects,
+  changeProjectStatus,
+  withdrawFunds,
 };

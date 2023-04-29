@@ -3,8 +3,9 @@ const app = express();
 const {connectDB} = require('./db/connect');
 const project = require('./routes/project');
 const port = process.env.PORT || 8000;
+
 app.use(express.json());
-// console.log(project);
+
 app.use("/project", project);
 
 const start = async () => {
