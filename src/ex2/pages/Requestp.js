@@ -2,23 +2,59 @@
 import MainLayout from '../mainlayout/MainLayout';
 import {Link} from "react-router-dom"
 import React, { useState } from "react";
+import Axios from 'axios';
 function Home() {
   const [selectedImage, setSelectedImage] = useState(null);
+  //const navigate = useNavigate();
+
+    const url="http://127.0.0.1:8000/request";
+    const [data,setData]=useState({
+      name:"",
+      amount:"",
+      addr:"",
+      email:"",
+      img:""
+    })
+    function handle(e){
+      const newdata={...data}
+      newdata[e.target.id]=e.target.value
+      setData(newdata);
+      console.log(newdata);
+    }
+    function submit(e){
+      e.preventDefault();
+      Axios.post(url,{
+        projectTitle:data.name,
+        amount:data.amount,
+        recipientWalletAddress:data.addr,
+        supervisorMailId:data.email,
+        billProofLink:data.img
+      })
+      .then(res=>{
+        //navigate(".././pages/Success");
+        
+        alert("Success");
+      })
+      .catch(err => alert("project not created")); 
+    }
   return (
     
     <MainLayout>
       <div className="createProject">
+      <form onSubmit={(e)=>submit(e)}>
       <div className="insidecreate">
       <h1>Request Fund</h1><br></br>
-        <span>Project Title: </span><input type="text" className='createinp'></input><br></br><br></br>
-        <span>Amount:</span><input type="text" className='createinp'></input><br></br><br></br>
-        <span>Wallet Address:</span><input type="text" className='createinp'></input><br></br><br></br>
+        <span>Project Title: </span><input id="name" type="text" onChange={(e)=>handle(e)} className='createinp'></input><br></br><br></br>
+        <span>Amount:</span><input id="amount" type="text" onChange={(e)=>handle(e)} className='createinp'></input><br></br><br></br>
+        <span>Wallet Address:</span><input id="addr" type="text" onChange={(e)=>handle(e)} className='createinp'></input><br></br><br></br>
+        <span>Email Id:</span><input id="email" type="text" onChange={(e)=>handle(e)} className='createinp'></input><br></br><br></br>
         {selectedImage && (
         <div>
           <img
             alt="not found"
             width={"250px"}
             src={URL.createObjectURL(selectedImage)}
+            
           />
           <br />
           <button onClick={() => setSelectedImage(null)}>Remove</button>
@@ -32,9 +68,11 @@ function Home() {
       <input
         type="file"
         name="myImage"
+        id="img"
         onChange={(event) => {
           console.log(event.target.files[0]);
           setSelectedImage(event.target.files[0]);
+          handle(event);
         }}
       /> 
       </div>
@@ -51,6 +89,7 @@ function Home() {
           }} >
         Create</button>
         </Link>
+        </form>
       </div>
     </MainLayout>
     

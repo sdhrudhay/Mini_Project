@@ -24,6 +24,10 @@ function Navbar() {
                             color: isActive ? 'greenyellow' : 'white' ,textDecoration: isActive? "underline":"none"})}>Close</NavLink></li> */}
             {/* <li><NavLink to='/Contact' style={({ isActive }) => ({ 
                             color: isActive ? 'greenyellow' : 'white' ,textDecoration: isActive? "underline":"none"})}>Contact us</NavLink></li> */}
+                            <li><NavLink to='/Requestv' style={({ isActive }) => ({ 
+                            color: isActive ? 'greenyellow' : 'white' ,textDecoration: isActive? "underline":"none"})}>Requests</NavLink></li>
+                            <li><NavLink to='/Funds' style={({ isActive }) => ({ 
+                            color: isActive ? 'greenyellow' : 'white' ,textDecoration: isActive? "underline":"none"})}>Funds</NavLink></li> 
             <li><NavLink to='/Login' className="login">< TfiUser /> Logout</NavLink></li>
         {/* <ul className="navbar-login">
             <li className='login'><a href='/Login'><BsPersonCircle/>Login</a></li>
