@@ -3,6 +3,7 @@ const { StatusCodes } = require("http-status-codes");
 const { uploadImage } = require('../cloudinaryApis/createImage');
 
 const createRequest = async(req , res) =>{
+    console.log(req.body);
     console.log("entered create request controller") ;
     const file = req.files.photo ;
     const imageLink = await uploadImage(file) ;

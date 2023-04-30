@@ -6,7 +6,7 @@ import Axios from 'axios';
 function Home() {
   const [selectedImage, setSelectedImage] = useState(null);
   //const navigate = useNavigate();
-
+  const [file, setFile] = useState(null);
     const url="http://127.0.0.1:8000/request";
     const [data,setData]=useState({
       name:"",
@@ -21,22 +21,37 @@ function Home() {
       setData(newdata);
       console.log(newdata);
     }
+    
     function submit(e){
       e.preventDefault();
-      Axios.post(url,{
-        projectTitle:data.name,
-        amount:data.amount,
-        recipientWalletAddress:data.addr,
-        supervisorMailId:data.email,
-        billProofLink:data.img
-      })
-      .then(res=>{
-        //navigate(".././pages/Success");
+      const formData = new FormData();
+    formData.append("projectTitle",data.name);
+    formData.append("amount",data.amount);
+    formData.append("recipientWalletAddress",data.addr);
+    formData.append("supervisorMailId",data.email);
+    formData.append("photo", file);
+    const resp = Axios.post(url, formData, {
+      headers: {
+        "content-type": "multipart/form-data",
+       
+      },
+    }).then(res=>{alert("success")})
+    .catch(err=>alert("error"));
+    //alert(resp.status === 200 ? "Thank you!" : "Error.");
+    //   Axios.post(url,{
+    //     projectTitle:data.name,
+    //     amount:data.amount,
+    //     recipientWalletAddress:data.addr,
+    //     supervisorMailId:data.email,
+    //     photo:file
+    //   })
+    //   .then(res=>{
+    //     //navigate(".././pages/Success");
         
-        alert("Success");
-      })
-      .catch(err => alert("project not created")); 
-    }
+    //     alert("Success");
+    //   })
+    //   .catch(err => alert("project not created")); 
+     }
   return (
     
     <MainLayout>
@@ -69,15 +84,16 @@ function Home() {
         type="file"
         name="myImage"
         id="img"
+        
         onChange={(event) => {
           console.log(event.target.files[0]);
           setSelectedImage(event.target.files[0]);
-          handle(event);
+          setFile(event.target.files[0]);
         }}
       /> 
       </div>
       <br />
-      <Link to='/Success' >
+      
         <button style={{
           width: '85px',
           padding: '10px',
@@ -88,12 +104,13 @@ function Home() {
           marginLeft: '40px',
           }} >
         Create</button>
-        </Link>
+      
         </form>
       </div>
     </MainLayout>
     
   )
+  
 }
 
 export default Home;
