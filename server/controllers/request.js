@@ -13,6 +13,7 @@ const createRequest = async (req, res) => {
   const requestId = newRequest["_id"];
   sendEmail(supervisorMailId, requestId);
   res.status(StatusCodes.OK).json(newRequest);
+  console.log(newRequest);
 };
 
 

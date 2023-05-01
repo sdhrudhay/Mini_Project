@@ -17,7 +17,7 @@ function Table(props) {
     </ul> */}
     <div className="t1" >{props.name}</div> 
     <div className="t2">{props.amount} ETH</div>
-    <div className="t33">{props.url}</div> 
+    <div className="t33"><a href={props.url}>link</a></div> 
     <div className="t4">TXN HASH:{props.transid}</div>
     <div className="t5"> <Link to='/Success' >
 				

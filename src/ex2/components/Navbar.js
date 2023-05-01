@@ -20,10 +20,10 @@ function Navbar() {
         <ul className="navbar-menu">
             {/* <li ><NavLink to="/Home" style={({ isActive }) => ({ 
                             color: isActive ? 'greenyellow' : 'white' ,textDecoration: isActive? "underline":"none"})}>Create</NavLink></li> */}
-            {/* <li><NavLink to="/Project" style={({ isActive }) => ({ 
-                            color: isActive ? 'greenyellow' : 'white' ,textDecoration: isActive? "underline":"none"})}>Close</NavLink></li> */}
-            {/* <li><NavLink to='/Contact' style={({ isActive }) => ({ 
-                            color: isActive ? 'greenyellow' : 'white' ,textDecoration: isActive? "underline":"none"})}>Contact us</NavLink></li> */}
+            <li><NavLink to="/Requestp" style={({ isActive }) => ({ 
+                            color: isActive ? 'greenyellow' : 'white' ,textDecoration: isActive? "underline":"none"})}>Request fund</NavLink></li> 
+             <li><NavLink to='/RequestMail' style={({ isActive }) => ({ 
+                            color: isActive ? 'greenyellow' : 'white' ,textDecoration: isActive? "underline":"none"})}>Status</NavLink></li> 
             <li><NavLink to='/Login' className="login">< TfiUser /> Logout</NavLink></li>
         {/* <ul className="navbar-login">
             <li className='login'><a href='/Login'><BsPersonCircle/>Login</a></li>

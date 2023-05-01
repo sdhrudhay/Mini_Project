@@ -15,6 +15,7 @@ import CHome from './ex/pages/CHome';
 import CProject from './ex/pages/CProject';
 import App1 from './ex/components/App';
 import Requestp from './ex2/pages/Requestp';
+import RequestMail from './ex2/pages/RequestMail';
 import Requestv from './ex3/pages/Requestv';
 import Funds from './ex3/pages/Funds';
 import {
@@ -81,6 +82,10 @@ const router = createBrowserRouter([
   {
     path: "funds",
     element: <Funds />,
+  },
+  {
+    path: "requestmail",
+    element: <RequestMail />,
   }
 ]);
 
