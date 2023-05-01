@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
-require('dotenv').config();
-const {setupCloudConfig} = require('./cloudinaryApis/connect');
+require("dotenv").config();
+const { setupCloudConfig } = require("./modules/cloudinaryApis/connect");
 const fileUpload = require("express-fileupload");
 const { connectDB } = require("./db/connect");
 const project = require("./routes/project");
@@ -25,7 +25,7 @@ app.use(
 app.use(express.json());
 
 app.use("/project", project);
-app.use("/request" , request) ;
+app.use("/request", request);
 
 const start = async () => {
   try {
