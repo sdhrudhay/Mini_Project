@@ -15,6 +15,7 @@ const createRequest = async (req, res) => {
   res.status(StatusCodes.OK).json(newRequest);
 };
 
+
 const fetchRequest = async (req, res) => {
   const requestId = req.params.id;
   console.log(`fetching request with id : ${requestId}`);

@@ -16,6 +16,7 @@ import CProject from './ex/pages/CProject';
 import App1 from './ex/components/App';
 import Requestp from './ex2/pages/Requestp';
 import Requestv from './ex3/pages/Requestv';
+import Funds from './ex3/pages/Funds';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -76,6 +77,10 @@ const router = createBrowserRouter([
   {
     path: "requestv",
     element: <Requestv />,
+  },
+  {
+    path: "funds",
+    element: <Funds />,
   }
 ]);
 
