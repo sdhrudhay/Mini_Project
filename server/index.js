@@ -6,6 +6,7 @@ const fileUpload = require("express-fileupload");
 const { connectDB } = require("./db/connect");
 const project = require("./routes/project");
 const request = require("./routes/request");
+const transaction = require("./routes/transaction");
 const port = process.env.PORT || 8000;
 
 app.use(function (req, res, next) {
@@ -22,10 +23,12 @@ app.use(
     useTempFiles: true,
   })
 );
+
 app.use(express.json());
 
 app.use("/project", project);
 app.use("/request", request);
+app.use("/transaction", transaction);
 
 const start = async () => {
   try {
